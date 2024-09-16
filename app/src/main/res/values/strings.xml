@@ -14,6 +14,6 @@
     <string name="art_report_unsolved">The case is not solved</string>
     <string name="art_report_no_suspect">there is no suspect.</string>
     <string name="art_report_suspect">the suspect is %s.</string>
-    <string name="art_report_subject">CriminalIntent Art Report</string>
+    <string name="art_report_subject">CityArtWalk Art Report</string>
     <string name="send_report">Send art report via</string>
 </resources>

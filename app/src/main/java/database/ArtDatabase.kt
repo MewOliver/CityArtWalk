@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.bignerdranch.android.criminalintent.Art
+import com.bignerdranch.android.cityartwalk.Art
 
 @Database(entities = [Art::class], version = 3)
 @TypeConverters(ArtTypeConverters::class)

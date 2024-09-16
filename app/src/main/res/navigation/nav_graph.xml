@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/artListFragment"
-        android:name="com.bignerdranch.android.criminalintent.ArtListFragment"
+        android:name="com.bignerdranch.android.cityartwalk.ArtListFragment"
         android:label="ArtListFragment"
         tools:layout="@layout/fragment_art_list" >
         <action
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/artDetailFragment"
-        android:name="com.bignerdranch.android.criminalintent.ArtDetailFragment"
+        android:name="com.bignerdranch.android.cityartwalk.ArtDetailFragment"
         android:label="ArtDetailFragment" >
         <argument
             android:name="artId"
@@ -28,7 +28,7 @@
     </fragment>
     <dialog
         android:id="@+id/datePickerFragment"
-        android:name="com.bignerdranch.android.criminalintent.DatePickerFragment"
+        android:name="com.bignerdranch.android.cityartwalk.DatePickerFragment"
         android:label="DatePickerFragment" >
         <argument
             android:name="artDate"

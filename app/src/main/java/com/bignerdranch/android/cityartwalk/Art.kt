@@ -1,4 +1,4 @@
-package com.bignerdranch.android.criminalintent
+package com.bignerdranch.android.cityartwalk
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

@@ -1,4 +1,4 @@
-package com.bignerdranch.android.criminalintent
+package com.bignerdranch.android.cityartwalk
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,7 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bignerdranch.android.criminalintent.databinding.FragmentArtListBinding
+import com.bignerdranch.android.cityartwalk.databinding.FragmentArtListBinding
 import kotlinx.coroutines.launch
 import java.util.Date
 import java.util.UUID

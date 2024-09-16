@@ -1,4 +1,4 @@
-package com.bignerdranch.android.criminalintent
+package com.bignerdranch.android.cityartwalk
 
 import android.content.Context
 import androidx.room.Room

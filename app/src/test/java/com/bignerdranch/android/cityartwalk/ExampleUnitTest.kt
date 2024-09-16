@@ -1,4 +1,4 @@
-package com.bignerdranch.android.criminalintent
+package com.bignerdranch.android.cityartwalk
 
 import org.junit.Test
 

@@ -1,9 +1,9 @@
-package com.bignerdranch.android.criminalintent
+package com.bignerdranch.android.cityartwalk
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bignerdranch.android.criminalintent.databinding.ListItemArtBinding
+import com.bignerdranch.android.cityartwalk.databinding.ListItemArtBinding
 import java.util.UUID
 
 class ArtHolder(

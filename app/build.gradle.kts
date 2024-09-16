@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.bignerdranch.android.criminalintent"
+    namespace = "com.bignerdranch.android.cityartwalk"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.bignerdranch.android.criminalintent"
+        applicationId = "com.bignerdranch.android.cityartwalk"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

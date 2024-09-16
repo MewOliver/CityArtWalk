@@ -1,8 +1,8 @@
-package com.bignerdranch.android.criminalintent
+package com.bignerdranch.android.cityartwalk
 
 import android.app.Application
 
-class CriminalIntentApplication : Application() {
+class CityArtWalkApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         ArtRepository.initialize(this)

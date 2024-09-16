@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.bignerdranch.android.criminalintent.Art
+import com.bignerdranch.android.cityartwalk.Art
 import kotlinx.coroutines.flow.Flow
 import java.util.UUID
 

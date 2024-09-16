@@ -1,4 +1,4 @@
-package com.bignerdranch.android.criminalintent
+package com.bignerdranch.android.cityartwalk
 
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -18,7 +18,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.bignerdranch.android.criminalintent.databinding.FragmentArtDetailBinding
+import com.bignerdranch.android.cityartwalk.databinding.FragmentArtDetailBinding
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import android.text.format.DateFormat
@@ -105,7 +105,7 @@ class ArtDetailFragment : Fragment() {
                 val photoFile = File(requireContext().applicationContext.filesDir, photoName)
                 val photoUri = FileProvider.getUriForFile(
                     requireContext(),
-                    "com.bignerdranch.android.criminalintent.fileprovider",
+                    "com.bignerdranch.android.cityartwalk.fileprovider",
                     photoFile
                 )
 
