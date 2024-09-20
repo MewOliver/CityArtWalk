@@ -52,6 +52,14 @@
                 android:hint="@string/art_title_hint"
                 android:importantForAutofill="no"
                 android:inputType="text" />
+
+            <EditText
+                android:id="@+id/art_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/art_address_label"
+                android:importantForAutofill="no"
+                android:inputType="text" />
         </LinearLayout>
 
     </LinearLayout>

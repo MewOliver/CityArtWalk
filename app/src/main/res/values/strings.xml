@@ -2,6 +2,7 @@
     <string name="app_name">My Application</string>
     <string name="art_title_hint">Enter a title for the art.</string>
     <string name="art_title_label">Title</string>
+    <string name="art_address_label">Address</string>
     <string name="art_details_label">Details</string>
     <string name="art_solved_label">Solved</string>
     <string name="new_art">New Art</string>
@@ -15,5 +16,5 @@
     <string name="art_report_no_suspect">there is no suspect.</string>
     <string name="art_report_suspect">the suspect is %s.</string>
     <string name="art_report_subject">CityArtWalk Art Report</string>
-    <string name="send_report">Send art report via</string>
+    <string name="send_report">Share</string>
 </resources>

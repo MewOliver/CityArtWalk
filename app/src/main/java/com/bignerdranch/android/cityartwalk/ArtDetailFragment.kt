@@ -83,6 +83,12 @@ class ArtDetailFragment : Fragment() {
                 }
             }
 
+            //artAddress.doOnTextChanged { text, _, _, _ ->
+            //    artDetailViewModel.updateArt { oldArt ->
+            //        oldArt.copy(address = text.toString())
+            //    }
+            //}
+
             artSolved.setOnCheckedChangeListener { _, isChecked ->
                 artDetailViewModel.updateArt { oldArt ->
                     oldArt.copy(isSolved = isChecked)
