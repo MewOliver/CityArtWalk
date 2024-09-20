@@ -6,8 +6,9 @@
     <string name="art_details_label">Details</string>
     <string name="art_solved_label">Solved</string>
     <string name="new_art">New Art</string>
+    <string name="help">Help</string>
     <string name="art_suspect_text">Choose Suspect</string>
-    <string name="art_report_text">Send Art Report</string>
+    <string name="art_report_text">Share</string>
     <string name="art_report">%1$s!
       The art was discovered on %2$s. %3$s, and %4$s
     </string>
