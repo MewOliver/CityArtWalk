@@ -11,6 +11,7 @@ class ArtHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(art: Art, onArtClicked: (artId: UUID) -> Unit) {
         binding.artTitle.text = art.title
+        binding.artAddress.text = art.address
         binding.artDate.text = art.date.toString()
 
         binding.root.setOnClickListener {

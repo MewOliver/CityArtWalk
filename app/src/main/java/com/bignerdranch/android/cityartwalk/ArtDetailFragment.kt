@@ -83,11 +83,11 @@ class ArtDetailFragment : Fragment() {
                 }
             }
 
-            //artAddress.doOnTextChanged { text, _, _, _ ->
-            //    artDetailViewModel.updateArt { oldArt ->
-            //        oldArt.copy(address = text.toString())
-            //    }
-            //}
+            artAddress.doOnTextChanged { text, _, _, _ ->
+                artDetailViewModel.updateArt { oldArt ->
+                    oldArt.copy(address = text.toString())
+                }
+            }
 
             artSolved.setOnCheckedChangeListener { _, isChecked ->
                 artDetailViewModel.updateArt { oldArt ->
@@ -98,13 +98,6 @@ class ArtDetailFragment : Fragment() {
             artSuspect.setOnClickListener {
                 selectSuspect.launch(null)
             }
-
-            // Remove the following lines - ChatGPT suggestion
-            // val selectSuspectIntent = selectSuspect.contract.createIntent(
-            //     requireContext(),
-            //     null
-            // )
-            // artSuspect.isEnabled = canResolveIntent(selectSuspectIntent)
 
             artCamera.setOnClickListener {
                 photoName = "IMG_${Date()}.JPG"
@@ -118,12 +111,6 @@ class ArtDetailFragment : Fragment() {
                 takePhoto.launch(photoUri)
             }
 
-            // Remove the following lines - ChatGPT suggestion
-            // val captureImageIntent = takePhoto.contract.createIntent(
-            //     requireContext(),
-            //     null
-            // )
-            // artCamera.isEnabled = canResolveIntent(captureImageIntent)
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -154,6 +141,11 @@ class ArtDetailFragment : Fragment() {
             if (artTitle.text.toString() != art.title) {
                 artTitle.setText(art.title)
             }
+
+            if (artAddress.text.toString() != art.address) {
+                artAddress.setText(art.address)
+            }
+
             artDate.text = art.date.toString()
             artDate.setOnClickListener {
                 findNavController().navigate(
@@ -203,7 +195,7 @@ class ArtDetailFragment : Fragment() {
 
         return getString(
             R.string.art_report,
-            art.title, dateString, solvedString, suspectText
+            art.title, art.address, dateString, suspectText
         )
     }
 

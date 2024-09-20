@@ -10,7 +10,7 @@ data class Art(
     @PrimaryKey val id: UUID,
     val title: String,
     val date: Date,
-    //val address: String,
+    val address: String?,
     val isSolved: Boolean,
     val suspect: String = "",
     val photoFileName: String? = null

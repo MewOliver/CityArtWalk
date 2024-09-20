@@ -5,6 +5,7 @@ import androidx.room.Room
 import database.ArtDatabase
 import database.migration_1_2
 import database.migration_2_3
+import database.migration_3_4
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
@@ -25,6 +26,7 @@ class ArtRepository private constructor(
             DATABASE_NAME
         )
         .addMigrations(migration_1_2, migration_2_3)
+        .addMigrations(migration_2_3, migration_3_4)
         .build()
 
     fun getArts(): Flow<List<Art>> = database.artDao().getArts()

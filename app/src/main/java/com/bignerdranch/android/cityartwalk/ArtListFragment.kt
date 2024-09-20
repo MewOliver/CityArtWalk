@@ -88,7 +88,7 @@ class ArtListFragment : Fragment() {
             val newArt = Art(
                 id = UUID.randomUUID(),
                 title = "",
-                //address = "",
+                address = "",
                 date = Date(),
                 isSolved = false
             )
