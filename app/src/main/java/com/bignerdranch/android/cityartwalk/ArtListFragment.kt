@@ -1,5 +1,6 @@
 package com.bignerdranch.android.cityartwalk
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -27,7 +28,7 @@ class ArtListFragment : Fragment() {
             "Cannot access binding because it is null. Is the view visible?"
         }
 
-    private val artListViewModel : ArtListViewModel by viewModels()
+    private val artListViewModel: ArtListViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +46,13 @@ class ArtListFragment : Fragment() {
 
         return binding.root
     }
+
+    val helpPageUri: Uri
+        get() =
+            Uri.parse("https://www.queensland.com/au/en/places-to-see/destinations/brisbane/where-to-find-street-art-in-brisbane")
+            //Uri.parse("https://www.google.com")
+            .buildUpon()
+            .build()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -79,6 +87,16 @@ class ArtListFragment : Fragment() {
                 showNewArt()
                 true
             }
+
+            R.id.help -> {
+                findNavController().navigate(
+                    ArtListFragmentDirections.showHelp(
+                        helpPageUri
+                    )
+                )
+                true
+            }
+
             else -> super.onOptionsItemSelected(item)
         }
     }

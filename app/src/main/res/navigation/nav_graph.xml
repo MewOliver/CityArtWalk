@@ -14,6 +14,11 @@
         <action
             android:id="@+id/show_art_detail"
             app:destination="@id/artDetailFragment" />
+
+        <action
+            android:id="@+id/showHelp"
+            app:destination="@id/helpPageFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/artDetailFragment"
@@ -26,6 +31,16 @@
             android:id="@+id/select_date"
             app:destination="@id/datePickerFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/helpPageFragment"
+        android:name="com.bignerdranch.android.cityartwalk.HelpPageFragment"
+        android:label="HelpPageFragment">
+        <argument
+            android:name="helpPageUri"
+            app:argType="android.net.Uri" />
+    </fragment>
+
     <dialog
         android:id="@+id/datePickerFragment"
         android:name="com.bignerdranch.android.cityartwalk.DatePickerFragment"

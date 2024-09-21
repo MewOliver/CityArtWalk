@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">City Art Walk</string>
     <string name="art_title_hint">Enter a title for the art.</string>
     <string name="art_title_label">Title</string>
     <string name="art_address_label">Address</string>

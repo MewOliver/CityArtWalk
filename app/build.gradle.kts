@@ -37,6 +37,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 }
 
@@ -55,6 +56,8 @@ dependencies {
 
     implementation("androidx.navigation:navigation-fragment:2.4.1")
     implementation("androidx.navigation:navigation-ui:2.4.1")
+
+    implementation("androidx.constraintlayout:constraintlayout:2.2.0-beta01")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
