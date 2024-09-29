@@ -95,10 +95,10 @@
         android:text="@string/art_report_text" />
 
     <TextView
+        android:id="@+id/art_gps"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?attr/textAppearanceHeadline5"
-        android:text="Lat: Long:" />
+        android:text="" />
 
     <Button
         android:id="@+id/get_gps"

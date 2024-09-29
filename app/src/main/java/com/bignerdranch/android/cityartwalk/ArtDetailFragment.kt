@@ -130,6 +130,8 @@ class ArtDetailFragment : Fragment() {
 
             }
 
+
+
             getGps.setOnClickListener {
                 if (ActivityCompat.checkSelfPermission(
                     requireContext(),
@@ -144,16 +146,6 @@ class ArtDetailFragment : Fragment() {
                 if (GoogleApiAvailability.getInstance()
                         .isGooglePlayServicesAvailable(requireContext()) == ConnectionResult.SUCCESS
                 ) {
-                    // Get Location
-                    //fusedLocationProviderClient.getLastLocation()
-                    //    .addOnSuccessListener { location: Location? ->
-                    //        location?.let {
-                    //            artDetailViewModel.updateArt { oldArt ->
-                    //                oldArt.copy(latitude = location.latitude, longitude = location.longitude)
-                    //            }
-                    //       }
-                    //        Log.d("GPS", "Got a location" + location)
-                    //    }
                     fusedLocationProviderClient.getCurrentLocation(
                         Priority.PRIORITY_HIGH_ACCURACY,
                         object : CancellationToken() {
@@ -166,13 +158,16 @@ class ArtDetailFragment : Fragment() {
                             artDetailViewModel.updateArt { oldArt ->
                                 oldArt.copy(latitude = location.latitude, longitude = location.longitude)
                             }
+                            // Update the TextView with the new location values
+                            val locationText = "Lat: ${location.latitude}, Long: ${location.longitude}"
+                            binding.artGps.text = locationText
+
                         }
                         Log.d("GPS", "Got a location" + location)
                         }
                     }
 
-                }
-
+                } else {Log.d("GPS", "Location permission denied") }
             }
         }
 
