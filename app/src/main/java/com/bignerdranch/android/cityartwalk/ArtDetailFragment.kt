@@ -24,6 +24,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import android.text.format.DateFormat
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
@@ -132,11 +133,18 @@ class ArtDetailFragment : Fragment() {
 
             showMap.setOnClickListener {
                 artDetailViewModel.art.value?.let { art ->
-                    val intent = Intent(requireContext(), MapsActivity::class.java).apply {
-                        putExtra("LATITUDE", art.latitude)
-                        putExtra("LONGITUDE", art.longitude)
+                    // Check if the latitude and longitude are valid (not zero)
+                    if (art.latitude != 0.0 && art.longitude != 0.0) {
+                        // Launch MapsActivity with valid coordinates
+                        val intent = Intent(requireContext(), MapsActivity::class.java).apply {
+                            putExtra("LATITUDE", art.latitude)
+                            putExtra("LONGITUDE", art.longitude)
+                        }
+                        startActivity(intent)
+                    } else {
+                        // Show a message to the user if the location is not set
+                        Toast.makeText(requireContext(), "Location not set", Toast.LENGTH_SHORT).show()
                     }
-                    startActivity(intent)
                 }
             }
 
