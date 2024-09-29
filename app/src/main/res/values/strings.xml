@@ -20,6 +20,6 @@
     <string name="send_report">Share</string>
     <string name="get_gps">Get GPS</string>
     <string name="show_map">Show Map</string>
-    <string name="google_maps_key">AIzaSyBwRlnTLGTu64qmTZriOsnYLY6ien3htJY</string>
+    <string name="google_maps_key">find key on google console</string>
     <string name="title_activity_maps">MapsActivity</string>
 </resources>
