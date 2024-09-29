@@ -130,7 +130,10 @@ class ArtDetailFragment : Fragment() {
 
             }
 
-
+            showMap.setOnClickListener {
+                val intent = Intent(requireContext(), MapsActivity::class.java)
+                startActivity(intent)
+            }
 
             getGps.setOnClickListener {
                 if (ActivityCompat.checkSelfPermission(
@@ -185,6 +188,7 @@ class ArtDetailFragment : Fragment() {
             val newDate =
                 bundle.getSerializable(DatePickerFragment.BUNDLE_KEY_DATE) as Date
             artDetailViewModel.updateArt { it.copy(date = newDate) }
+
         }
     }
 
