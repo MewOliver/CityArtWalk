@@ -13,7 +13,7 @@ class ArtHolder(
         binding.artTitle.text = art.title
         binding.artAddress.text = art.address
         binding.artDate.text = art.date.toString()
-
+        
         binding.root.setOnClickListener {
             onArtClicked(art.id)
         }

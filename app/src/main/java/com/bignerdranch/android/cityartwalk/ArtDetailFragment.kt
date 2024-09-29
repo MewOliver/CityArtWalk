@@ -208,6 +208,10 @@ class ArtDetailFragment : Fragment() {
                 artAddress.setText(art.address)
             }
 
+            if (artGps.text.toString() != "Lat: ${art.latitude}, Long: ${art.longitude}") {
+                artGps.setText("Lat: ${art.latitude}, Long: ${art.longitude}")
+            }
+
             artDate.text = art.date.toString()
             artDate.setOnClickListener {
                 findNavController().navigate(
