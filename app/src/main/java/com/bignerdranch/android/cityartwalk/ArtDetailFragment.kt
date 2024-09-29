@@ -25,6 +25,8 @@ import android.text.format.DateFormat
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.core.view.doOnLayout
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import getScaledBitmap
 import java.io.File
 import java.util.Date
@@ -40,6 +42,13 @@ class ArtDetailFragment : Fragment() {
         }
 
     private val args: ArtDetailFragmentArgs by navArgs()
+
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
+    }
 
     private val artDetailViewModel: ArtDetailViewModel by viewModels {
         ArtDetailViewModelFactory(args.artId)
@@ -110,6 +119,8 @@ class ArtDetailFragment : Fragment() {
 
                 takePhoto.launch(photoUri)
             }
+
+            //artGetGps.setOnClickListern
 
         }
 

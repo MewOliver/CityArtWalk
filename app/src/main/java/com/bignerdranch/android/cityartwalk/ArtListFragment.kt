@@ -108,7 +108,9 @@ class ArtListFragment : Fragment() {
                 title = "",
                 address = "",
                 date = Date(),
-                isSolved = false
+                isSolved = false,
+                latitude = 0.0,
+                longitude = 0.0
             )
             artListViewModel.addArt(newArt)
             findNavController().navigate(

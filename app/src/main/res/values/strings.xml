@@ -18,4 +18,6 @@
     <string name="art_report_suspect">the suspect is %s.</string>
     <string name="art_report_subject">CityArtWalk Art Report</string>
     <string name="send_report">Share</string>
+    <string name="get_gps">Get GPS</string>
+    <string name="show_map">Show Map</string>
 </resources>
