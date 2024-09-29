@@ -40,9 +40,22 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        // Get the latitude and longitude from the intent
+        val latitude = intent.getDoubleExtra("LATITUDE", 0.0)
+        val longitude = intent.getDoubleExtra("LONGITUDE", 0.0)
+
+        // Check if the coordinates are valid
+        if (latitude != 0.0 && longitude != 0.0) {
+            val location = LatLng(latitude, longitude)
+
+            // Add a marker at the provided location and move the camera
+            mMap.addMarker(MarkerOptions().position(location).title("Marker at Art Location"))
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f)) // Adjust zoom level
+        } else {
+            // Default behavior if no valid coordinates are provided
+            val defaultLocation = LatLng(-34.0, 151.0) // Example: Sydney
+            mMap.addMarker(MarkerOptions().position(defaultLocation).title("Marker in Sydney"))
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(defaultLocation))
+        }
     }
 }

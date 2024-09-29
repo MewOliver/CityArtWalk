@@ -131,8 +131,13 @@ class ArtDetailFragment : Fragment() {
             }
 
             showMap.setOnClickListener {
-                val intent = Intent(requireContext(), MapsActivity::class.java)
-                startActivity(intent)
+                artDetailViewModel.art.value?.let { art ->
+                    val intent = Intent(requireContext(), MapsActivity::class.java).apply {
+                        putExtra("LATITUDE", art.latitude)
+                        putExtra("LONGITUDE", art.longitude)
+                    }
+                    startActivity(intent)
+                }
             }
 
             getGps.setOnClickListener {
