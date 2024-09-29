@@ -3,6 +3,7 @@ package com.bignerdranch.android.cityartwalk
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.pm.ResolveInfo
+import android.location.Location
 import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
@@ -22,11 +23,19 @@ import com.bignerdranch.android.cityartwalk.databinding.FragmentArtDetailBinding
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import android.text.format.DateFormat
+import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
 import androidx.core.view.doOnLayout
+import com.google.android.gms.common.ConnectionResult
+import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.Priority
+import com.google.android.gms.tasks.CancellationToken
+import com.google.android.gms.tasks.CancellationTokenSource
+import com.google.android.gms.tasks.OnTokenCanceledListener
 import getScaledBitmap
 import java.io.File
 import java.util.Date
@@ -118,10 +127,53 @@ class ArtDetailFragment : Fragment() {
                 )
 
                 takePhoto.launch(photoUri)
+
             }
 
-            //artGetGps.setOnClickListern
+            getGps.setOnClickListener {
+                if (ActivityCompat.checkSelfPermission(
+                    requireContext(),
+                    android.Manifest.permission.ACCESS_FINE_LOCATION
+                ) == PackageManager.PERMISSION_GRANTED
+                || ActivityCompat.checkSelfPermission(
+                        requireContext(),
+                        android.Manifest.permission.ACCESS_COARSE_LOCATION
+                ) == PackageManager.PERMISSION_GRANTED
+            ) {
+                Log.d("GPS", "Have permissions. Try to get a location")
+                if (GoogleApiAvailability.getInstance()
+                        .isGooglePlayServicesAvailable(requireContext()) == ConnectionResult.SUCCESS
+                ) {
+                    // Get Location
+                    //fusedLocationProviderClient.getLastLocation()
+                    //    .addOnSuccessListener { location: Location? ->
+                    //        location?.let {
+                    //            artDetailViewModel.updateArt { oldArt ->
+                    //                oldArt.copy(latitude = location.latitude, longitude = location.longitude)
+                    //            }
+                    //       }
+                    //        Log.d("GPS", "Got a location" + location)
+                    //    }
+                    fusedLocationProviderClient.getCurrentLocation(
+                        Priority.PRIORITY_HIGH_ACCURACY,
+                        object : CancellationToken() {
+                            override fun onCanceledRequested(p0: OnTokenCanceledListener) =
+                                CancellationTokenSource().token
 
+                            override fun isCancellationRequested() = false
+                        }).addOnSuccessListener { location: Location? ->
+                        location?.let {
+                            artDetailViewModel.updateArt { oldArt ->
+                                oldArt.copy(latitude = location.latitude, longitude = location.longitude)
+                            }
+                        }
+                        Log.d("GPS", "Got a location" + location)
+                        }
+                    }
+
+                }
+
+            }
         }
 
         viewLifecycleOwner.lifecycleScope.launch {

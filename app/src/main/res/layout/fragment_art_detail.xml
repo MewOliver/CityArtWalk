@@ -94,25 +94,18 @@
         android:layout_height="wrap_content"
         android:text="@string/art_report_text" />
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="0dp"
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:textAppearance="?attr/textAppearanceHeadline5"
+        android:text="Lat: Long:" />
 
-        <Button
-            android:id="@+id/get_gps"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/get_gps" />
+    <Button
+        android:id="@+id/get_gps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/get_gps" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?attr/textAppearanceHeadline5"
-            android:text="Lat: Long:" />
-
-    </LinearLayout>
 
     <Button
         android:id="@+id/show_map"
