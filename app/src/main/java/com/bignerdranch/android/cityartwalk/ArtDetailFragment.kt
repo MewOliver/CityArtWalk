@@ -64,12 +64,6 @@ class ArtDetailFragment : Fragment() {
         ArtDetailViewModelFactory(args.artId)
     }
 
-    private val selectSuspect = registerForActivityResult(
-        ActivityResultContracts.PickContact()
-    ) { uri: Uri? ->
-        uri?.let { parseContactSelection(it) }
-    }
-
     private val takePhoto = registerForActivityResult(
         ActivityResultContracts.TakePicture()
     ) { didTakePhoto: Boolean ->
@@ -106,16 +100,6 @@ class ArtDetailFragment : Fragment() {
                 artDetailViewModel.updateArt { oldArt ->
                     oldArt.copy(address = text.toString())
                 }
-            }
-
-            artSolved.setOnCheckedChangeListener { _, isChecked ->
-                artDetailViewModel.updateArt { oldArt ->
-                    oldArt.copy(isSolved = isChecked)
-                }
-            }
-
-            artSuspect.setOnClickListener {
-                selectSuspect.launch(null)
             }
 
             artCamera.setOnClickListener {
@@ -231,7 +215,6 @@ class ArtDetailFragment : Fragment() {
                     ArtDetailFragmentDirections.selectDate(art.date)
                 )
             }
-            artSolved.isChecked = art.isSolved
 
             artReport.setOnClickListener {
                 val reportIntent = Intent(Intent.ACTION_SEND).apply {
@@ -250,47 +233,18 @@ class ArtDetailFragment : Fragment() {
                 startActivity(chooserIntent)
             }
 
-            artSuspect.text = art.suspect.ifEmpty {
-                getString(R.string.art_suspect_text)
-            }
-
             updatePhoto(art.photoFileName)
         }
     }
 
     private fun getArtReport(art: Art): String {
-        val solvedString = if (art.isSolved) {
-            getString(R.string.art_report_solved)
-        } else {
-            getString(R.string.art_report_unsolved)
-        }
 
         val dateString = DateFormat.format(DATE_FORMAT, art.date).toString()
-        val suspectText = if (art.suspect.isBlank()) {
-            getString(R.string.art_report_no_suspect)
-        } else {
-            getString(R.string.art_report_suspect, art.suspect)
-        }
 
         return getString(
             R.string.art_report,
-            art.title, art.address, dateString, suspectText
+            art.title, art.address, dateString, ""
         )
-    }
-
-    private fun parseContactSelection(contactUri: Uri) {
-        val queryFields = arrayOf(ContactsContract.Contacts.DISPLAY_NAME)
-
-        val queryCursor = requireActivity().contentResolver
-            .query(contactUri, queryFields, null, null, null)
-        queryCursor?.use { cursor ->
-            if (cursor.moveToFirst()) {
-                val suspect = cursor.getString(0)
-                artDetailViewModel.updateArt { oldArt ->
-                    oldArt.copy(suspect = suspect)
-                }
-            }
-        }
     }
 
     private fun canResolveIntent(intent: Intent) : Boolean {

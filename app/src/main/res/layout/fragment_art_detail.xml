@@ -76,24 +76,6 @@
         android:layout_height="wrap_content"
         tools:text="Wed May 11 11:56 EST 2022" />
 
-    <CheckBox
-        android:id="@+id/art_solved"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/art_solved_label" />
-
-    <Button
-        android:id="@+id/art_suspect"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/art_suspect_text" />
-
-    <Button
-        android:id="@+id/art_report"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/art_report_text" />
-
     <TextView
         android:id="@+id/art_gps"
         android:layout_width="match_parent"
@@ -113,5 +95,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/show_map" />
+
+    <Button
+        android:id="@+id/art_report"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/art_report_text" />
 
 </LinearLayout>

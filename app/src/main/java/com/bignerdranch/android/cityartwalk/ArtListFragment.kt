@@ -108,7 +108,6 @@ class ArtListFragment : Fragment() {
                 title = "",
                 address = "",
                 date = Date(),
-                isSolved = false,
                 latitude = 0.0,
                 longitude = 0.0
             )

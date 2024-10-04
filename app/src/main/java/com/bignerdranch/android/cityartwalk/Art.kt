@@ -11,9 +11,7 @@ data class Art(
     val title: String,
     val date: Date,
     val address: String?,
-    val isSolved: Boolean,
     val longitude: Double?,
     val latitude: Double?,
-    val suspect: String = "",
     val photoFileName: String? = null
 )

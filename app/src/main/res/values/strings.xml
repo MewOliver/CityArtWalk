@@ -4,18 +4,12 @@
     <string name="art_title_label">Title</string>
     <string name="art_address_label">Address</string>
     <string name="art_details_label">Details</string>
-    <string name="art_solved_label">Solved</string>
     <string name="new_art">New Art</string>
     <string name="help">Help</string>
-    <string name="art_suspect_text">Choose Suspect</string>
     <string name="art_report_text">Share</string>
     <string name="art_report">%1$s!
       The art was discovered on %2$s. %3$s, and %4$s
     </string>
-    <string name="art_report_solved">The case is solved</string>
-    <string name="art_report_unsolved">The case is not solved</string>
-    <string name="art_report_no_suspect">there is no suspect.</string>
-    <string name="art_report_suspect">the suspect is %s.</string>
     <string name="art_report_subject">CityArtWalk Art Report</string>
     <string name="send_report">Share</string>
     <string name="get_gps">Get GPS</string>
