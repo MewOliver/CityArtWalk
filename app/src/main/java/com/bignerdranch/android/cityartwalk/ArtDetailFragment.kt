@@ -95,6 +95,13 @@ class ArtDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.artPhoto.setOnClickListener {
+            artDetailViewModel.art.value?.photoFileName?.let { photoFileName ->
+                val dialogFragment = PhotoDialogFragment.newInstance(photoFileName)
+                dialogFragment.show(requireActivity().supportFragmentManager, "PhotoDialog")
+            }
+        }
+
         binding.deleteArt.setOnClickListener {
             artDetailViewModel.deleteArt()
             findNavController().popBackStack() // Navigate back after deletion
