@@ -63,7 +63,7 @@ class ArtListFragment : Fragment() {
                     binding.artRecyclerView.adapter =
                         ArtListAdapter(arts) { artId ->
                             findNavController().navigate(
-                                ArtListFragmentDirections.showArtDetail(artId)
+                                ArtListFragmentDirections.showArtDetail(artId = artId, isNewArt = false)
                             )
                         }
                 }
@@ -113,7 +113,7 @@ class ArtListFragment : Fragment() {
             )
             artListViewModel.addArt(newArt)
             findNavController().navigate(
-                ArtListFragmentDirections.showArtDetail(newArt.id)
+                ArtListFragmentDirections.showArtDetail(artId = newArt.id, isNewArt = true)
             )
         }
     }

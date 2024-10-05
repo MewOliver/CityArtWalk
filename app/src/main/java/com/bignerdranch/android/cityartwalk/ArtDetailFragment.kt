@@ -83,11 +83,22 @@ class ArtDetailFragment : Fragment() {
     ): View? {
         _binding =
             FragmentArtDetailBinding.inflate(inflater, container, false)
+
+        // Check if this is new art and hide the delete button
+        if (args.isNewArt) {
+            binding.deleteArt.visibility = View.GONE // Hide delete button
+        }
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.deleteArt.setOnClickListener {
+            artDetailViewModel.deleteArt()
+            findNavController().popBackStack() // Navigate back after deletion
+        }
 
         binding.apply {
             artTitle.doOnTextChanged { text, _, _, _ ->
@@ -134,36 +145,36 @@ class ArtDetailFragment : Fragment() {
 
             getGps.setOnClickListener {
                 if (ActivityCompat.checkSelfPermission(
-                    requireContext(),
-                    android.Manifest.permission.ACCESS_FINE_LOCATION
-                ) == PackageManager.PERMISSION_GRANTED
-                || ActivityCompat.checkSelfPermission(
+                        requireContext(),
+                        android.Manifest.permission.ACCESS_FINE_LOCATION
+                    ) == PackageManager.PERMISSION_GRANTED
+                    || ActivityCompat.checkSelfPermission(
                         requireContext(),
                         android.Manifest.permission.ACCESS_COARSE_LOCATION
-                ) == PackageManager.PERMISSION_GRANTED
-            ) {
-                Log.d("GPS", "Have permissions. Try to get a location")
-                if (GoogleApiAvailability.getInstance()
-                        .isGooglePlayServicesAvailable(requireContext()) == ConnectionResult.SUCCESS
+                    ) == PackageManager.PERMISSION_GRANTED
                 ) {
-                    fusedLocationProviderClient.getCurrentLocation(
-                        Priority.PRIORITY_HIGH_ACCURACY,
-                        object : CancellationToken() {
-                            override fun onCanceledRequested(p0: OnTokenCanceledListener) =
-                                CancellationTokenSource().token
+                    Log.d("GPS", "Have permissions. Try to get a location")
+                    if (GoogleApiAvailability.getInstance()
+                            .isGooglePlayServicesAvailable(requireContext()) == ConnectionResult.SUCCESS
+                    ) {
+                        fusedLocationProviderClient.getCurrentLocation(
+                            Priority.PRIORITY_HIGH_ACCURACY,
+                            object : CancellationToken() {
+                                override fun onCanceledRequested(p0: OnTokenCanceledListener) =
+                                    CancellationTokenSource().token
 
-                            override fun isCancellationRequested() = false
-                        }).addOnSuccessListener { location: Location? ->
-                        location?.let {
-                            artDetailViewModel.updateArt { oldArt ->
-                                oldArt.copy(latitude = location.latitude, longitude = location.longitude)
+                                override fun isCancellationRequested() = false
+                            }).addOnSuccessListener { location: Location? ->
+                            location?.let {
+                                artDetailViewModel.updateArt { oldArt ->
+                                    oldArt.copy(latitude = location.latitude, longitude = location.longitude)
+                                }
+                                // Update the TextView with the new location values
+                                val locationText = "Lat: ${location.latitude}, Long: ${location.longitude}"
+                                binding.artGps.text = locationText
+
                             }
-                            // Update the TextView with the new location values
-                            val locationText = "Lat: ${location.latitude}, Long: ${location.longitude}"
-                            binding.artGps.text = locationText
-
-                        }
-                        Log.d("GPS", "Got a location" + location)
+                            Log.d("GPS", "Got a location" + location)
                         }
                     }
 
@@ -174,7 +185,9 @@ class ArtDetailFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 artDetailViewModel.art.collect { art ->
-                    art?.let { updateUi(it) }
+                    art?.let {
+                        updateUi(it)
+                    }
                 }
             }
         }

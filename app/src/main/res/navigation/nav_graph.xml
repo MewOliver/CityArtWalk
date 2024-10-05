@@ -11,9 +11,17 @@
         android:name="com.bignerdranch.android.cityartwalk.ArtListFragment"
         android:label="ArtListFragment"
         tools:layout="@layout/fragment_art_list" >
+
         <action
             android:id="@+id/show_art_detail"
-            app:destination="@id/artDetailFragment" />
+            app:destination="@id/artDetailFragment" >
+            <argument
+                android:name="artId"
+                app:argType="java.util.UUID" />
+            <argument
+                android:name="isNewArt"
+                app:argType="boolean" />
+        </action>
 
         <action
             android:id="@+id/showHelp"
@@ -27,6 +35,9 @@
         <argument
             android:name="artId"
             app:argType="java.util.UUID" />
+        <argument
+            android:name="isNewArt"
+            app:argType="boolean" /> <!-- Add this line -->
         <action
             android:id="@+id/select_date"
             app:destination="@id/datePickerFragment" />

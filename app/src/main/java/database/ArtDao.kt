@@ -1,6 +1,7 @@
 package database
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
@@ -21,4 +22,7 @@ interface ArtDao {
 
     @Insert
     suspend fun addArt(art: Art)
+
+    @Delete
+    suspend fun deleteArt(art: Art)
 }

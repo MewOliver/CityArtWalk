@@ -22,6 +22,14 @@ class ArtDetailViewModel(artId: UUID) : ViewModel() {
         }
     }
 
+    fun deleteArt() {
+        art.value?.let {
+            viewModelScope.launch {
+                artRepository.deleteArt(it)
+            }
+        }
+    }
+
     fun updateArt(onUpdate: (Art) -> Art) {
         _art.update { oldArt ->
             oldArt?.let { onUpdate(it) }

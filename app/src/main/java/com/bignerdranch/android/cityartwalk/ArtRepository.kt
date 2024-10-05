@@ -34,6 +34,13 @@ class ArtRepository private constructor(
         }
     }
 
+    fun deleteArt(art: Art) {
+        coroutineScope.launch {
+            database.artDao().deleteArt(art)
+        }
+    }
+
+
     suspend fun addArt(art: Art) {
         database.artDao().addArt(art)
     }
